@@ -30,7 +30,7 @@ function App() {
     try {
       // Note: In real world, this would call the Cloudflare Worker API
       // For demonstration, we'll simulate the call
-      const response = await fetch('https://press-release-worker.your-subdomain.workers.dev/', {
+      const response = await fetch('https://public.eieu5683.workers.dev/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
