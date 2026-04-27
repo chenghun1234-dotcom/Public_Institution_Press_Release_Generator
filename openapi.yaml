@@ -1,0 +1,52 @@
+openapi: 3.0.0
+info:
+  title: Public Institution Press Release Generator API
+  description: API for generating Korean public institution style press releases using AI.
+  version: 1.0.0
+servers:
+  - url: https://public.wpbb1004.workers.dev
+    description: Production server
+paths:
+  /:
+    post:
+      summary: Generate a press release
+      operationId: generatePressRelease
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                topic:
+                  type: string
+                  description: The topic of the press release
+                  example: "스마트 도서관 개관"
+                date:
+                  type: string
+                  description: Deployment date (YYYY-MM-DD)
+                  example: "2026-05-01"
+                department:
+                  type: string
+                  description: Responsible department
+                  example: "홍보소통과"
+                details:
+                  type: string
+                  description: Key facts and figures (bullet points recommended)
+                  example: "- 무인 대출 시스템 도입\n- 24시간 운영"
+              required:
+                - topic
+                - details
+      responses:
+        '200':
+          description: Successful generation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  content:
+                    type: string
+                    description: The generated press release text
+        '500':
+          description: Server error
